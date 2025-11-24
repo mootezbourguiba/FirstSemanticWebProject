@@ -21,8 +21,11 @@ def run_sparql_query(query):
 
 @app.route('/hotels', methods=['GET'])
 def get_hotels():
-    # ... (This is the standard list endpoint, simplified for brevity) ...
-    query = """
+    city_filter = request.args.get('city')
+    min_price = request.args.get('min_price')
+    max_price = request.args.get('max_price')
+
+    query_body = """
     PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
     SELECT ?name ?city ?price ?rating ?co2
     WHERE {
@@ -33,10 +36,23 @@ def get_hotels():
              eco:ecoRating ?rating ;
              eco:carbonFootprint ?co2 .
       BIND(STRAFTER(STR(?cityNode), "#") AS ?city)
-    }
     """
-    raw_data = run_sparql_query(query)
-    return format_results(raw_data)
+
+    if city_filter and city_filter != "all":
+        query_body += f'FILTER (REGEX(?city, "{city_filter}", "i"))\n'
+    
+    if min_price and max_price:
+        try:
+            # Add filter for the price range
+            query_body += f'FILTER (?price >= {float(min_price)} && ?price <= {float(max_price)})\n'
+        except ValueError:
+            # Handle cases where price is not a valid float
+            pass
+    
+    query_body += "}" # Close WHERE clause
+    
+    raw_data = run_sparql_query(query_body)
+    return jsonify(format_results(raw_data))
 
 @app.route('/chat', methods=['POST'])
 def chat_bot():
@@ -106,13 +122,112 @@ def format_results(raw_data):
     clean_results = []
     for item in raw_data:
         clean_results.append({
-            "name": item["name"]["value"],
-            "city": item["city"]["value"],
-            "price": float(item["price"]["value"]),
-            "rating": int(item["rating"]["value"]),
-            "co2": float(item["co2"]["value"])
+            "name": item.get("name", {}).get("value"),
+            "city": item.get("city", {}).get("value"),
+            "price": float(item.get("price", {}).get("value", 0)),
+            "rating": int(item.get("rating", {}).get("value", 0)),
+            "co2": float(item.get("co2", {}).get("value", 0)),
+            "activity_name": item.get("activity_name", {}).get("value")
         })
     return clean_results
+
+def format_single_result(raw_data):
+    if not raw_data:
+        return {}
+    item = raw_data[0]
+    return {
+        "name": item.get("name", {}).get("value"),
+        "city": item.get("city", {}).get("value"),
+        "price": float(item.get("price", {}).get("value", 0)),
+        "rating": int(item.get("rating", {}).get("value", 0)),
+        "co2": float(item.get("co2", {}).get("value", 0)),
+        "activity_name": item.get("activity_name", {}).get("value")
+    }
+
+@app.route('/hotel_details', methods=['GET'])
+def get_hotel_details():
+    hotel_name = request.args.get('name')
+    if not hotel_name:
+        return jsonify({"error": "Hotel name is required"}), 400
+
+    query = f"""
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+    SELECT ?name ?city ?price ?rating ?co2 ?activity_name
+    WHERE {{
+      ?hotel eco:hasName "{hotel_name}"^^xsd:string .
+      ?hotel eco:hasName ?name ;
+             eco:isLocatedIn ?cityNode ;
+             eco:hasPricePerNight ?price ;
+             eco:ecoRating ?rating ;
+             eco:carbonFootprint ?co2 .
+      OPTIONAL {{ 
+          ?hotel eco:offersActivity ?activity .
+          ?activity eco:hasName ?activity_name .
+      }}
+      BIND(STRAFTER(STR(?cityNode), "#") AS ?city)
+    }}
+    LIMIT 1
+    """
+    raw_data = run_sparql_query(query)
+    return jsonify(format_single_result(raw_data))
+
+@app.route('/price_range', methods=['GET'])
+def get_price_range():
+    """Returns the min and max price for all hotels."""
+    query = """
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    SELECT (MIN(?price) as ?min_price) (MAX(?price) as ?max_price)
+    WHERE {
+      ?hotel eco:hasPricePerNight ?price .
+    }
+    """
+    raw_data = run_sparql_query(query)
+    if raw_data and raw_data[0]['min_price'] and raw_data[0]['max_price']:
+        price_range = {
+            "min_price": float(raw_data[0]['min_price']['value']),
+            "max_price": float(raw_data[0]['max_price']['value'])
+        }
+        return jsonify(price_range)
+    return jsonify({"min_price": 0, "max_price": 1000}) # Fallback
+
+@app.route('/cities', methods=['GET'])
+def get_cities():
+    """Returns a list of unique cities."""
+    query = """
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    SELECT DISTINCT ?city
+    WHERE {
+      ?hotel eco:isLocatedIn ?cityNode .
+      BIND(STRAFTER(STR(?cityNode), "#") AS ?city)
+    }
+    ORDER BY ?city
+    """
+    raw_data = run_sparql_query(query)
+    # Flatten the list of dictionaries into a simple list of strings
+    cities_list = [item['city']['value'] for item in raw_data]
+    return jsonify(cities_list)
+
+@app.route('/recommendations', methods=['GET'])
+def get_recommendations():
+    """Returns the top 4 highest-rated hotels."""
+    query = """
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    SELECT ?name ?city ?price ?rating ?co2
+    WHERE {
+      { ?hotel a eco:EcoLodge } UNION { ?hotel a eco:Hotel } .
+      ?hotel eco:hasName ?name ;
+             eco:isLocatedIn ?cityNode ;
+             eco:hasPricePerNight ?price ;
+             eco:ecoRating ?rating ;
+             eco:carbonFootprint ?co2 .
+      BIND(STRAFTER(STR(?cityNode), "#") AS ?city)
+    }
+    ORDER BY DESC(?rating)
+    LIMIT 4
+    """
+    raw_data = run_sparql_query(query)
+    return jsonify(format_results(raw_data))
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

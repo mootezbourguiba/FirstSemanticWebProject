@@ -38,8 +38,26 @@
         </div>
     </div>
 
+    <!-- Recommendations Section -->
+    <div class="container mb-5">
+        <h2 class="fw-bold mb-3">Our Top Eco-Picks 🌟</h2>
+        <div id="recommendations-grid" class="row g-4">
+            <!-- Recommendations will be injected here -->
+        </div>
+        <hr class="my-5">
+    </div>
+
     <!-- 🏨 Hotel Grid -->
     <div class="container mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fw-bold mb-0">All Accommodations</h2>
+            <div class="d-flex align-items-center">
+                <label for="city-filter" class="form-label me-2 mb-0">Filter by City:</label>
+                <select id="city-filter" class="form-select" style="width: auto;" onchange="filterHotelsByCity()">
+                    <!-- City options will be injected here -->
+                </select>
+            </div>
+        </div>
         <div id="hotel-grid" class="row g-4">
             <!-- Hotels will be injected here by JavaScript -->
             <div class="text-center text-muted py-5">
@@ -51,21 +69,60 @@
 
     <!-- 🧠 JavaScript Logic -->
     <script>
-        // Base URL for Flask (Note: removed /hotels to allow accessing /chat)
+        // Base URL for Flask
         const API_BASE = "http://127.0.0.1:5000";
 
-        // 1. Load All Hotels on Startup
+        // 1. Load All Data on Startup
         window.onload = async function() {
+            // Fetch recommendations, all hotels, and cities in parallel
             try {
-                const response = await fetch(`${API_BASE}/hotels`);
-                const data = await response.json();
-                renderHotels(data);
+                const [recoResponse, hotelsResponse, citiesResponse] = await Promise.all([
+                    fetch(`${API_BASE}/recommendations`),
+                    fetch(`${API_BASE}/hotels`),
+                    fetch(`${API_BASE}/cities`)
+                ]);
+                
+                const recoData = await recoResponse.json();
+                const hotelsData = await hotelsResponse.json();
+                const citiesData = await citiesResponse.json();
+
+                renderHotels(recoData, 'recommendations-grid');
+                renderHotels(hotelsData, 'hotel-grid');
+                populateCityFilter(citiesData);
+
             } catch (error) {
-                showError();
+                console.error("Failed to load data:", error);
+                showError('recommendations-grid');
+                showError('hotel-grid');
             }
         };
 
-        // 2. Send Chat to AI
+        // New function to populate the city filter dropdown
+        function populateCityFilter(cities) {
+            const filter = document.getElementById('city-filter');
+            filter.innerHTML = '<option value="all">All Cities</option>'; // Start with an "All" option
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                filter.appendChild(option);
+            });
+        }
+
+        // New function to fetch and render hotels based on city selection
+        async function filterHotelsByCity() {
+            const selectedCity = document.getElementById('city-filter').value;
+            try {
+                const response = await fetch(`${API_BASE}/hotels?city=${selectedCity}`);
+                const data = await response.json();
+                renderHotels(data, 'hotel-grid');
+            } catch (error) {
+                console.error("Failed to filter hotels:", error);
+                showError('hotel-grid');
+            }
+        }
+
+        // 2. Send Chat to AI (now only affects the main grid)
         async function sendChat() {
             const inputField = document.getElementById("chatInput");
             const userText = inputField.value.trim();
@@ -91,8 +148,8 @@
                 responseArea.innerHTML = `🤖 "${result.response}"`;
                 grid.style.opacity = "1";
 
-                // UI: Render filtered results
-                renderHotels(result.data);
+                // UI: Render filtered results into the main grid
+                renderHotels(result.data, 'hotel-grid');
 
             } catch (error) {
                 console.error(error);
@@ -101,9 +158,10 @@
             }
         }
 
-        // 3. Render Cards Function
-        function renderHotels(hotels) {
-            const grid = document.getElementById("hotel-grid");
+        // 3. Render Cards Function (Now accepts a gridId)
+        function renderHotels(hotels, gridId) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return; // Safety check
             grid.innerHTML = ""; // Clear previous results
 
             if (!hotels || hotels.length === 0) {
@@ -111,46 +169,48 @@
                 return;
             }
 
+            // Adjust column class based on the grid
+            const columnClass = (gridId === 'recommendations-grid') ? 'col-md-3' : 'col-md-4';
+
             hotels.forEach(hotel => {
-                // Visual Logic: Leaves for rating
                 const leaves = "🍃".repeat(hotel.rating) + "⚪".repeat(5 - hotel.rating);
-                
-                // Visual Logic: Green text if CO2 < 20
-                const co2Class = hotel.co2 < 20 ? "low" : ""; 
+                const co2Class = hotel.co2 < 20 ? "low" : "";
 
                 const cardHTML = `
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-body d-flex flex-column">
-                                <div class="d-flex justify-content-between align-items-start mb-2">
-                                    <span class="eco-badge text-uppercase">${hotel.city}</span>
-                                    <span class="text-success" title="${hotel.rating} Stars">${leaves}</span>
-                                </div>
-                                <h5 class="card-title fw-bold mb-3">${hotel.name}</h5>
-                                
-                                <div class="mt-auto">
-                                    <hr>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <div class="price-tag">${hotel.price} TND <span class="text-muted fs-6">/night</span></div>
-                                        <div class="co2-tag ${co2Class} fw-bold">💨 ${hotel.co2} kg CO2</div>
+                    <div class="${columnClass}">
+                        <a href="details.html?name=${encodeURIComponent(hotel.name)}" class="card-link" style="text-decoration: none; color: inherit;">
+                            <div class="card h-100">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <span class="eco-badge text-uppercase">${hotel.city}</span>
+                                        <span class="text-success" title="${hotel.rating} Stars">${leaves}</span>
                                     </div>
-                                    <button class="btn btn-outline-success w-100 fw-bold">Book Eco-Stay</button>
+                                    <h5 class="card-title fw-bold mb-3">${hotel.name}</h5>
+                                    
+                                    <div class="mt-auto">
+                                        <hr>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="price-tag">${hotel.price} TND <span class="text-muted fs-6">/night</span></div>
+                                            <div class="co2-tag ${co2Class} fw-bold">💨 ${hotel.co2} kg CO2</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 `;
                 grid.insertAdjacentHTML('beforeend', cardHTML);
             });
         }
 
-        function showError() {
-            document.getElementById("hotel-grid").innerHTML = `
+        function showError(gridId) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+            grid.innerHTML = `
                 <div class="col-12 text-center">
                     <div class="alert alert-danger d-inline-block">
                         ❌ <b>Connection Failed</b><br>
-                        Is your Python (Flask) server running?<br>
-                        Is Fuseki running?
+                        Could not load data. Is the server running?
                     </div>
                 </div>`;
         }
