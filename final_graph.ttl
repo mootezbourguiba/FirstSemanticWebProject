@@ -5,411 +5,621 @@
 
 <http://www.semanticweb.org/eco-tourism> a owl:Ontology .
 
-eco:Accommodation_1 a eco:Hotel ;
-    eco:carbonFootprint 3.224e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "EcoLodge Tunis 1"^^xsd:string ;
-    eco:hasPricePerNight "140"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_10 a eco:Hotel ;
-    eco:carbonFootprint 4.746e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "GreenStay Tunis 10"^^xsd:string ;
-    eco:hasPricePerNight "55"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_CamelRide .
-
-eco:Accommodation_11 a eco:Hotel ;
-    eco:carbonFootprint 6.969e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "NatureInn Tozeur 11"^^xsd:string ;
-    eco:hasPricePerNight "107"^^xsd:float ;
-    eco:isLocatedIn eco:Tozeur ;
-    eco:offersActivity eco:Activity_BirdWatching .
-
-eco:Accommodation_12 a eco:EcoLodge ;
-    eco:carbonFootprint 1.918e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "EcoLodge Sousse 12"^^xsd:string ;
-    eco:hasPricePerNight "127"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_13 a eco:Hotel ;
-    eco:carbonFootprint 6.906e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "ForestHut Sousse 13"^^xsd:string ;
-    eco:hasPricePerNight "113"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_CamelRide .
-
-eco:Accommodation_14 a eco:Hotel ;
-    eco:carbonFootprint 4.276e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "GreenStay Tunis 14"^^xsd:string ;
-    eco:hasPricePerNight "65"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_15 a eco:EcoLodge ;
-    eco:carbonFootprint 1.455e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "ForestHut Djerba 15"^^xsd:string ;
-    eco:hasPricePerNight "208"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_CamelRide .
-
-eco:Accommodation_16 a eco:Hotel ;
-    eco:carbonFootprint 4.345e+01 ;
-    eco:ecoRating 4 ;
-    eco:hasName "BlueOasis AinDraham 16"^^xsd:string ;
-    eco:hasPricePerNight "271"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_17 a eco:Hotel ;
-    eco:carbonFootprint 4.882e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "DesertCamp AinDraham 17"^^xsd:string ;
-    eco:hasPricePerNight "256"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_18 a eco:Hotel ;
-    eco:carbonFootprint 7.438e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "EcoLodge Sousse 18"^^xsd:string ;
-    eco:hasPricePerNight "245"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_19 a eco:EcoLodge ;
-    eco:carbonFootprint 1.603e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "ForestHut Tunis 19"^^xsd:string ;
-    eco:hasPricePerNight "72"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_BirdWatching .
-
-eco:Accommodation_2 a eco:Hotel ;
-    eco:carbonFootprint 4.439e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "NatureInn Tunis 2"^^xsd:string ;
-    eco:hasPricePerNight "296"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_20 a eco:EcoLodge ;
-    eco:carbonFootprint 1.27e+01 ;
-    eco:ecoRating 1 ;
-    eco:hasName "ForestHut Tozeur 20"^^xsd:string ;
-    eco:hasPricePerNight "175"^^xsd:float ;
-    eco:isLocatedIn eco:Tozeur ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_21 a eco:Hotel ;
-    eco:carbonFootprint 6.634e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "ForestHut Tunis 21"^^xsd:string ;
-    eco:hasPricePerNight "258"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_CamelRide .
-
-eco:Accommodation_22 a eco:Hotel ;
-    eco:carbonFootprint 3.617e+01 ;
-    eco:ecoRating 1 ;
-    eco:hasName "ForestHut Djerba 22"^^xsd:string ;
-    eco:hasPricePerNight "282"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_23 a eco:Hotel ;
-    eco:carbonFootprint 3.234e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "GreenStay Sousse 23"^^xsd:string ;
-    eco:hasPricePerNight "74"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_24 a eco:Hotel ;
-    eco:carbonFootprint 7.67e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "EcoLodge AinDraham 24"^^xsd:string ;
-    eco:hasPricePerNight "88"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_25 a eco:Hotel ;
-    eco:carbonFootprint 6.559e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "EcoLodge Sousse 25"^^xsd:string ;
-    eco:hasPricePerNight "97"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_CamelRide .
-
-eco:Accommodation_26 a eco:Hotel ;
-    eco:carbonFootprint 3.627e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "DesertCamp AinDraham 26"^^xsd:string ;
-    eco:hasPricePerNight "268"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_27 a eco:Hotel ;
-    eco:carbonFootprint 4.078e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "NatureInn Tabarka 27"^^xsd:string ;
-    eco:hasPricePerNight "114"^^xsd:float ;
-    eco:isLocatedIn eco:Tabarka ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_28 a eco:Hotel ;
-    eco:carbonFootprint 2.149e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "ForestHut Tunis 28"^^xsd:string ;
-    eco:hasPricePerNight "296"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_29 a eco:Hotel ;
-    eco:carbonFootprint 7.098e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "ForestHut Djerba 29"^^xsd:string ;
-    eco:hasPricePerNight "112"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_3 a eco:EcoLodge ;
-    eco:carbonFootprint 1.035e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "DesertCamp Sousse 3"^^xsd:string ;
-    eco:hasPricePerNight "146"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_30 a eco:Hotel ;
-    eco:carbonFootprint 7.153e+01 ;
-    eco:ecoRating 4 ;
-    eco:hasName "BlueOasis Djerba 30"^^xsd:string ;
-    eco:hasPricePerNight "166"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_31 a eco:Hotel ;
-    eco:carbonFootprint 3.96e+01 ;
-    eco:ecoRating 4 ;
-    eco:hasName "EcoLodge Tozeur 31"^^xsd:string ;
-    eco:hasPricePerNight "212"^^xsd:float ;
-    eco:isLocatedIn eco:Tozeur ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_32 a eco:Hotel ;
-    eco:carbonFootprint 6.693e+01 ;
-    eco:ecoRating 1 ;
-    eco:hasName "GreenStay Sousse 32"^^xsd:string ;
-    eco:hasPricePerNight "144"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_33 a eco:Hotel ;
-    eco:carbonFootprint 2.746e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "GreenStay Djerba 33"^^xsd:string ;
-    eco:hasPricePerNight "276"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_34 a eco:Hotel ;
-    eco:carbonFootprint 4.357e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "NatureInn Tunis 34"^^xsd:string ;
-    eco:hasPricePerNight "204"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_CamelRide .
-
-eco:Accommodation_35 a eco:Hotel ;
-    eco:carbonFootprint 5.377e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "NatureInn Tabarka 35"^^xsd:string ;
-    eco:hasPricePerNight "70"^^xsd:float ;
-    eco:isLocatedIn eco:Tabarka ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_36 a eco:EcoLodge ;
-    eco:carbonFootprint 1.071e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "EcoLodge Djerba 36"^^xsd:string ;
-    eco:hasPricePerNight "183"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_37 a eco:Hotel ;
-    eco:carbonFootprint 5.42e+01 ;
-    eco:ecoRating 1 ;
-    eco:hasName "ForestHut Djerba 37"^^xsd:string ;
-    eco:hasPricePerNight "265"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_38 a eco:Hotel ;
-    eco:carbonFootprint 3.096e+01 ;
-    eco:ecoRating 4 ;
-    eco:hasName "NatureInn Djerba 38"^^xsd:string ;
-    eco:hasPricePerNight "70"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_39 a eco:Hotel ;
-    eco:carbonFootprint 4.847e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "GreenStay AinDraham 39"^^xsd:string ;
-    eco:hasPricePerNight "86"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_4 a eco:Hotel ;
-    eco:carbonFootprint 2.205e+01 ;
-    eco:ecoRating 4 ;
-    eco:hasName "ForestHut Djerba 4"^^xsd:string ;
-    eco:hasPricePerNight "226"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_40 a eco:EcoLodge ;
-    eco:carbonFootprint 1.99e+01 ;
-    eco:ecoRating 1 ;
-    eco:hasName "ForestHut AinDraham 40"^^xsd:string ;
-    eco:hasPricePerNight "183"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_41 a eco:EcoLodge ;
-    eco:carbonFootprint 1.956e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "EcoLodge Tabarka 41"^^xsd:string ;
-    eco:hasPricePerNight "144"^^xsd:float ;
-    eco:isLocatedIn eco:Tabarka ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_42 a eco:Hotel ;
-    eco:carbonFootprint 5.037e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "DesertCamp Tunis 42"^^xsd:string ;
-    eco:hasPricePerNight "141"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_43 a eco:Hotel ;
-    eco:carbonFootprint 4.597e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "DesertCamp AinDraham 43"^^xsd:string ;
-    eco:hasPricePerNight "67"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_44 a eco:EcoLodge ;
-    eco:carbonFootprint 5.01e+00 ;
-    eco:ecoRating 1 ;
-    eco:hasName "ForestHut Djerba 44"^^xsd:string ;
-    eco:hasPricePerNight "62"^^xsd:float ;
-    eco:isLocatedIn eco:Djerba ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_45 a eco:Hotel ;
-    eco:carbonFootprint 3.614e+01 ;
-    eco:ecoRating 4 ;
-    eco:hasName "ForestHut AinDraham 45"^^xsd:string ;
-    eco:hasPricePerNight "197"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_46 a eco:Hotel ;
-    eco:carbonFootprint 2.418e+01 ;
-    eco:ecoRating 3 ;
-    eco:hasName "NatureInn Tozeur 46"^^xsd:string ;
-    eco:hasPricePerNight "65"^^xsd:float ;
-    eco:isLocatedIn eco:Tozeur ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_47 a eco:Hotel ;
-    eco:carbonFootprint 4.895e+01 ;
-    eco:ecoRating 1 ;
-    eco:hasName "NatureInn Tozeur 47"^^xsd:string ;
-    eco:hasPricePerNight "284"^^xsd:float ;
-    eco:isLocatedIn eco:Tozeur ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_48 a eco:Hotel ;
-    eco:carbonFootprint 6.57e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "EcoLodge Tunis 48"^^xsd:string ;
-    eco:hasPricePerNight "229"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_BirdWatching .
-
-eco:Accommodation_49 a eco:Hotel ;
-    eco:carbonFootprint 7.505e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "GreenStay Tunis 49"^^xsd:string ;
-    eco:hasPricePerNight "157"^^xsd:float ;
-    eco:isLocatedIn eco:Tunis ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_5 a eco:Hotel ;
-    eco:carbonFootprint 4.179e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "GreenStay Sousse 5"^^xsd:string ;
-    eco:hasPricePerNight "150"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_Diving .
-
-eco:Accommodation_50 a eco:Hotel ;
-    eco:carbonFootprint 6.368e+01 ;
-    eco:ecoRating 4 ;
-    eco:hasName "GreenStay AinDraham 50"^^xsd:string ;
-    eco:hasPricePerNight "67"^^xsd:float ;
-    eco:isLocatedIn eco:AinDraham ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_6 a eco:EcoLodge ;
-    eco:carbonFootprint 7e+00 ;
-    eco:ecoRating 1 ;
-    eco:hasName "EcoLodge Tabarka 6"^^xsd:string ;
-    eco:hasPricePerNight "138"^^xsd:float ;
-    eco:isLocatedIn eco:Tabarka ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Accommodation_7 a eco:Hotel ;
-    eco:carbonFootprint 6.71e+01 ;
-    eco:ecoRating 5 ;
-    eco:hasName "NatureInn Tabarka 7"^^xsd:string ;
-    eco:hasPricePerNight "118"^^xsd:float ;
-    eco:isLocatedIn eco:Tabarka ;
-    eco:offersActivity eco:Activity_PotteryWorkshop .
-
-eco:Accommodation_8 a eco:Hotel ;
-    eco:carbonFootprint 5.679e+01 ;
-    eco:ecoRating 1 ;
-    eco:hasName "ForestHut Sousse 8"^^xsd:string ;
-    eco:hasPricePerNight "236"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_BirdWatching .
-
-eco:Accommodation_9 a eco:Hotel ;
-    eco:carbonFootprint 5.365e+01 ;
-    eco:ecoRating 2 ;
-    eco:hasName "DesertCamp Sousse 9"^^xsd:string ;
-    eco:hasPricePerNight "165"^^xsd:float ;
-    eco:isLocatedIn eco:Sousse ;
-    eco:offersActivity eco:Activity_Hiking .
-
-eco:Camping a owl:Class ;
-    rdfs:subClassOf eco:Accommodation .
+eco:Activity a owl:Class ;
+    rdfs:subClassOf eco:Service .
 
 eco:Region a owl:Class ;
     rdfs:subClassOf eco:Location .
+
+eco:Service_Accommodation_1 a eco:Hotel ;
+    eco:carbonFootprint 7.019e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "BlueOasis Tabarka 1"^^xsd:string ;
+    eco:hasPricePerNight "67"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_324 .
+
+eco:Service_Accommodation_10 a eco:Hotel ;
+    eco:carbonFootprint 4.125e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "BlueOasis Tabarka 10"^^xsd:string ;
+    eco:hasPricePerNight "116"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_153 .
+
+eco:Service_Accommodation_11 a eco:EcoLodge ;
+    eco:carbonFootprint 1.81e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "NatureInn AinDraham 11"^^xsd:string ;
+    eco:hasPricePerNight "107"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_558 .
+
+eco:Service_Accommodation_12 a eco:Hotel ;
+    eco:carbonFootprint 3.561e+01 ;
+    eco:ecoRating 1 ;
+    eco:hasName "ForestHut Tabarka 12"^^xsd:string ;
+    eco:hasPricePerNight "100"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_538 .
+
+eco:Service_Accommodation_13 a eco:EcoLodge ;
+    eco:carbonFootprint 1.427e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "GreenStay AinDraham 13"^^xsd:string ;
+    eco:hasPricePerNight "150"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_642 .
+
+eco:Service_Accommodation_14 a eco:Camping ;
+    eco:carbonFootprint 2.592e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "DesertCamp Sousse 14"^^xsd:string ;
+    eco:hasPricePerNight "53"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse ;
+    eco:offersActivity eco:Activity_Ref_544 .
+
+eco:Service_Accommodation_15 a eco:Hotel ;
+    eco:carbonFootprint 4.123e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "GreenStay Tabarka 15"^^xsd:string ;
+    eco:hasPricePerNight "209"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_345 .
+
+eco:Service_Accommodation_16 a eco:EcoLodge ;
+    eco:carbonFootprint 1.506e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "NatureInn Tunis 16"^^xsd:string ;
+    eco:hasPricePerNight "89"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_618 .
+
+eco:Service_Accommodation_17 a eco:Hotel ;
+    eco:carbonFootprint 6.471e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "BlueOasis Tozeur 17"^^xsd:string ;
+    eco:hasPricePerNight "248"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_894 .
+
+eco:Service_Accommodation_18 a eco:Hotel ;
+    eco:carbonFootprint 3.672e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "EcoLodge Tabarka 18"^^xsd:string ;
+    eco:hasPricePerNight "180"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_243 .
+
+eco:Service_Accommodation_19 a eco:Hotel ;
+    eco:carbonFootprint 5.732e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "BlueOasis Tozeur 19"^^xsd:string ;
+    eco:hasPricePerNight "97"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_33 .
+
+eco:Service_Accommodation_2 a eco:EcoLodge ;
+    eco:carbonFootprint 8.85e+00 ;
+    eco:ecoRating 1 ;
+    eco:hasName "ForestHut Tozeur 2"^^xsd:string ;
+    eco:hasPricePerNight "110"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_482 .
+
+eco:Service_Accommodation_20 a eco:Camping ;
+    eco:carbonFootprint 2.955e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "DesertCamp Tunis 20"^^xsd:string ;
+    eco:hasPricePerNight "41"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_242 .
+
+eco:Service_Accommodation_21 a eco:Hotel ;
+    eco:carbonFootprint 7.243e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "GreenStay AinDraham 21"^^xsd:string ;
+    eco:hasPricePerNight "192"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_816 .
+
+eco:Service_Accommodation_22 a eco:Camping ;
+    eco:carbonFootprint 1.084e+01 ;
+    eco:ecoRating 1 ;
+    eco:hasName "DesertCamp Sousse 22"^^xsd:string ;
+    eco:hasPricePerNight "69"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse ;
+    eco:offersActivity eco:Activity_Ref_846 .
+
+eco:Service_Accommodation_23 a eco:EcoLodge ;
+    eco:carbonFootprint 2.152e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "EcoLodge Djerba 23"^^xsd:string ;
+    eco:hasPricePerNight "153"^^xsd:float ;
+    eco:isLocatedIn eco:Djerba ;
+    eco:offersActivity eco:Activity_Ref_80 .
+
+eco:Service_Accommodation_24 a eco:Hotel ;
+    eco:carbonFootprint 3.476e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "EcoLodge Tunis 24"^^xsd:string ;
+    eco:hasPricePerNight "92"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_36 .
+
+eco:Service_Accommodation_25 a eco:Hotel ;
+    eco:carbonFootprint 4.122e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "EcoLodge Tabarka 25"^^xsd:string ;
+    eco:hasPricePerNight "166"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_588 .
+
+eco:Service_Accommodation_26 a eco:EcoLodge ;
+    eco:carbonFootprint 7.53e+00 ;
+    eco:ecoRating 2 ;
+    eco:hasName "GreenStay Tozeur 26"^^xsd:string ;
+    eco:hasPricePerNight "258"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_249 .
+
+eco:Service_Accommodation_27 a eco:Hotel ;
+    eco:carbonFootprint 3.704e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "NatureInn Tabarka 27"^^xsd:string ;
+    eco:hasPricePerNight "240"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_272 .
+
+eco:Service_Accommodation_28 a eco:Hotel ;
+    eco:carbonFootprint 3.234e+01 ;
+    eco:ecoRating 5 ;
+    eco:hasName "GreenStay Tozeur 28"^^xsd:string ;
+    eco:hasPricePerNight "216"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_835 .
+
+eco:Service_Accommodation_29 a eco:Hotel ;
+    eco:carbonFootprint 6.363e+01 ;
+    eco:ecoRating 5 ;
+    eco:hasName "BlueOasis Tozeur 29"^^xsd:string ;
+    eco:hasPricePerNight "112"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_742 .
+
+eco:Service_Accommodation_3 a eco:Camping ;
+    eco:carbonFootprint 1.81e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "DesertCamp Djerba 3"^^xsd:string ;
+    eco:hasPricePerNight "55"^^xsd:float ;
+    eco:isLocatedIn eco:Djerba ;
+    eco:offersActivity eco:Activity_Ref_71 .
+
+eco:Service_Accommodation_30 a eco:Hotel ;
+    eco:carbonFootprint 2.928e+01 ;
+    eco:ecoRating 5 ;
+    eco:hasName "BlueOasis AinDraham 30"^^xsd:string ;
+    eco:hasPricePerNight "259"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_462 .
+
+eco:Service_Accommodation_31 a eco:EcoLodge ;
+    eco:carbonFootprint 9.82e+00 ;
+    eco:ecoRating 3 ;
+    eco:hasName "NatureInn Tabarka 31"^^xsd:string ;
+    eco:hasPricePerNight "137"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_218 .
+
+eco:Service_Accommodation_32 a eco:Camping ;
+    eco:carbonFootprint 6.833e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "DesertCamp Sousse 32"^^xsd:string ;
+    eco:hasPricePerNight "39"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse ;
+    eco:offersActivity eco:Activity_Ref_539 .
+
+eco:Service_Accommodation_33 a eco:Hotel ;
+    eco:carbonFootprint 4.928e+01 ;
+    eco:ecoRating 1 ;
+    eco:hasName "EcoLodge AinDraham 33"^^xsd:string ;
+    eco:hasPricePerNight "292"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_358 .
+
+eco:Service_Accommodation_34 a eco:EcoLodge ;
+    eco:carbonFootprint 1.563e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "BlueOasis Tunis 34"^^xsd:string ;
+    eco:hasPricePerNight "87"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_955 .
+
+eco:Service_Accommodation_35 a eco:EcoLodge ;
+    eco:carbonFootprint 2.1e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "EcoLodge AinDraham 35"^^xsd:string ;
+    eco:hasPricePerNight "84"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_575 .
+
+eco:Service_Accommodation_36 a eco:Hotel ;
+    eco:carbonFootprint 5.718e+01 ;
+    eco:ecoRating 1 ;
+    eco:hasName "ForestHut Tozeur 36"^^xsd:string ;
+    eco:hasPricePerNight "128"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_707 .
+
+eco:Service_Accommodation_37 a eco:Camping ;
+    eco:carbonFootprint 5.246e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "DesertCamp AinDraham 37"^^xsd:string ;
+    eco:hasPricePerNight "69"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_979 .
+
+eco:Service_Accommodation_38 a eco:Hotel ;
+    eco:carbonFootprint 4.112e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "NatureInn Tunis 38"^^xsd:string ;
+    eco:hasPricePerNight "51"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_873 .
+
+eco:Service_Accommodation_39 a eco:Camping ;
+    eco:carbonFootprint 9.62e+00 ;
+    eco:ecoRating 2 ;
+    eco:hasName "DesertCamp Tozeur 39"^^xsd:string ;
+    eco:hasPricePerNight "50"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_489 .
+
+eco:Service_Accommodation_4 a eco:Camping ;
+    eco:carbonFootprint 3.306e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "DesertCamp Tabarka 4"^^xsd:string ;
+    eco:hasPricePerNight "54"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_791 .
+
+eco:Service_Accommodation_40 a eco:EcoLodge ;
+    eco:carbonFootprint 6.84e+00 ;
+    eco:ecoRating 2 ;
+    eco:hasName "BlueOasis AinDraham 40"^^xsd:string ;
+    eco:hasPricePerNight "121"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_815 .
+
+eco:Service_Accommodation_41 a eco:EcoLodge ;
+    eco:carbonFootprint 1.229e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "EcoLodge Tunis 41"^^xsd:string ;
+    eco:hasPricePerNight "271"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_784 .
+
+eco:Service_Accommodation_42 a eco:Hotel ;
+    eco:carbonFootprint 3.775e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "ForestHut Tabarka 42"^^xsd:string ;
+    eco:hasPricePerNight "133"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_792 .
+
+eco:Service_Accommodation_43 a eco:Hotel ;
+    eco:carbonFootprint 5.819e+01 ;
+    eco:ecoRating 1 ;
+    eco:hasName "EcoLodge Tunis 43"^^xsd:string ;
+    eco:hasPricePerNight "87"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_527 .
+
+eco:Service_Accommodation_44 a eco:Camping ;
+    eco:carbonFootprint 4.534e+01 ;
+    eco:ecoRating 1 ;
+    eco:hasName "DesertCamp AinDraham 44"^^xsd:string ;
+    eco:hasPricePerNight "76"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_135 .
+
+eco:Service_Accommodation_45 a eco:Hotel ;
+    eco:carbonFootprint 5.865e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "EcoLodge Tunis 45"^^xsd:string ;
+    eco:hasPricePerNight "100"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_671 .
+
+eco:Service_Accommodation_46 a eco:Hotel ;
+    eco:carbonFootprint 3.489e+01 ;
+    eco:ecoRating 5 ;
+    eco:hasName "BlueOasis Tozeur 46"^^xsd:string ;
+    eco:hasPricePerNight "111"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_222 .
+
+eco:Service_Accommodation_47 a eco:Hotel ;
+    eco:carbonFootprint 6.08e+01 ;
+    eco:ecoRating 5 ;
+    eco:hasName "EcoLodge Tozeur 47"^^xsd:string ;
+    eco:hasPricePerNight "126"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur ;
+    eco:offersActivity eco:Activity_Ref_461 .
+
+eco:Service_Accommodation_48 a eco:Hotel ;
+    eco:carbonFootprint 7.592e+01 ;
+    eco:ecoRating 5 ;
+    eco:hasName "ForestHut Sousse 48"^^xsd:string ;
+    eco:hasPricePerNight "225"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse ;
+    eco:offersActivity eco:Activity_Ref_199 .
+
+eco:Service_Accommodation_49 a eco:Hotel ;
+    eco:carbonFootprint 2.726e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "NatureInn Tabarka 49"^^xsd:string ;
+    eco:hasPricePerNight "188"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka ;
+    eco:offersActivity eco:Activity_Ref_260 .
+
+eco:Service_Accommodation_5 a eco:EcoLodge ;
+    eco:carbonFootprint 1.907e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "GreenStay AinDraham 5"^^xsd:string ;
+    eco:hasPricePerNight "57"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_909 .
+
+eco:Service_Accommodation_50 a eco:Hotel ;
+    eco:carbonFootprint 2.884e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "GreenStay Djerba 50"^^xsd:string ;
+    eco:hasPricePerNight "194"^^xsd:float ;
+    eco:isLocatedIn eco:Djerba ;
+    eco:offersActivity eco:Activity_Ref_927 .
+
+eco:Service_Accommodation_6 a eco:EcoLodge ;
+    eco:carbonFootprint 2.227e+01 ;
+    eco:ecoRating 2 ;
+    eco:hasName "GreenStay AinDraham 6"^^xsd:string ;
+    eco:hasPricePerNight "264"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham ;
+    eco:offersActivity eco:Activity_Ref_572 .
+
+eco:Service_Accommodation_7 a eco:Hotel ;
+    eco:carbonFootprint 7.351e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "EcoLodge Djerba 7"^^xsd:string ;
+    eco:hasPricePerNight "119"^^xsd:float ;
+    eco:isLocatedIn eco:Djerba ;
+    eco:offersActivity eco:Activity_Ref_813 .
+
+eco:Service_Accommodation_8 a eco:EcoLodge ;
+    eco:carbonFootprint 2.41e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "BlueOasis Tunis 8"^^xsd:string ;
+    eco:hasPricePerNight "163"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_713 .
+
+eco:Service_Accommodation_9 a eco:Hotel ;
+    eco:carbonFootprint 3.563e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "BlueOasis Tunis 9"^^xsd:string ;
+    eco:hasPricePerNight "267"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis ;
+    eco:offersActivity eco:Activity_Ref_822 .
+
+eco:Service_Activity_1 a eco:Diving ;
+    eco:carbonFootprint 7.63e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Deep Blue Adventure in Tabarka"^^xsd:string ;
+    eco:hasPricePerNight "91"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka .
+
+eco:Service_Activity_10 a eco:Workshop ;
+    eco:carbonFootprint 1.418e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Ceramics Art in AinDraham"^^xsd:string ;
+    eco:hasPricePerNight "88"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham .
+
+eco:Service_Activity_11 a eco:Diving ;
+    eco:carbonFootprint 1.46e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Shipwreck Explore in Djerba"^^xsd:string ;
+    eco:hasPricePerNight "97"^^xsd:float ;
+    eco:isLocatedIn eco:Djerba .
+
+eco:Service_Activity_12 a eco:Diving ;
+    eco:carbonFootprint 7.32e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Coral Reef Dive in Tozeur"^^xsd:string ;
+    eco:hasPricePerNight "64"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur .
+
+eco:Service_Activity_13 a eco:Hiking ;
+    eco:carbonFootprint 3.11e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Forest Walk in AinDraham"^^xsd:string ;
+    eco:hasPricePerNight "64"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham .
+
+eco:Service_Activity_14 a eco:Hiking ;
+    eco:carbonFootprint 4.19e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Atlas Mountains Hike in Tunis"^^xsd:string ;
+    eco:hasPricePerNight "104"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis .
+
+eco:Service_Activity_15 a eco:Hiking ;
+    eco:carbonFootprint 1.412e+01 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Canyon Trail in Tabarka"^^xsd:string ;
+    eco:hasPricePerNight "34"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka .
+
+eco:Service_Activity_16 a eco:Hiking ;
+    eco:carbonFootprint 7.44e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Oasis Trek in Tabarka"^^xsd:string ;
+    eco:hasPricePerNight "87"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka .
+
+eco:Service_Activity_17 a eco:Workshop ;
+    eco:carbonFootprint 1.406e+01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "Ceramics Art in AinDraham"^^xsd:string ;
+    eco:hasPricePerNight "100"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham .
+
+eco:Service_Activity_18 a eco:Diving ;
+    eco:carbonFootprint 9.4e-01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "Shipwreck Explore in Sousse"^^xsd:string ;
+    eco:hasPricePerNight "46"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse .
+
+eco:Service_Activity_19 a eco:Hiking ;
+    eco:carbonFootprint 8.94e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Atlas Mountains Hike in Tabarka"^^xsd:string ;
+    eco:hasPricePerNight "85"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka .
+
+eco:Service_Activity_2 a eco:Hiking ;
+    eco:carbonFootprint 5.41e+00 ;
+    eco:ecoRating 3 ;
+    eco:hasName "Atlas Mountains Hike in Tunis"^^xsd:string ;
+    eco:hasPricePerNight "35"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis .
+
+eco:Service_Activity_20 a eco:Hiking ;
+    eco:carbonFootprint 7.59e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Canyon Trail in Sousse"^^xsd:string ;
+    eco:hasPricePerNight "76"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse .
+
+eco:Service_Activity_21 a eco:Diving ;
+    eco:carbonFootprint 6.2e-01 ;
+    eco:ecoRating 3 ;
+    eco:hasName "Shipwreck Explore in AinDraham"^^xsd:string ;
+    eco:hasPricePerNight "29"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham .
+
+eco:Service_Activity_22 a eco:Workshop ;
+    eco:carbonFootprint 3.39e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Cooking Couscous in AinDraham"^^xsd:string ;
+    eco:hasPricePerNight "109"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham .
+
+eco:Service_Activity_23 a eco:Diving ;
+    eco:carbonFootprint 1.3e-01 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Shipwreck Explore in Tozeur"^^xsd:string ;
+    eco:hasPricePerNight "86"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur .
+
+eco:Service_Activity_24 a eco:Workshop ;
+    eco:carbonFootprint 2.83e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Pottery Masterclass in Sousse"^^xsd:string ;
+    eco:hasPricePerNight "24"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse .
+
+eco:Service_Activity_25 a eco:Hiking ;
+    eco:carbonFootprint 1.86e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Canyon Trail in Tabarka"^^xsd:string ;
+    eco:hasPricePerNight "79"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka .
+
+eco:Service_Activity_26 a eco:Diving ;
+    eco:carbonFootprint 1.17e+00 ;
+    eco:ecoRating 3 ;
+    eco:hasName "Deep Blue Adventure in Tunis"^^xsd:string ;
+    eco:hasPricePerNight "77"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis .
+
+eco:Service_Activity_27 a eco:Hiking ;
+    eco:carbonFootprint 3.43e+00 ;
+    eco:ecoRating 3 ;
+    eco:hasName "Atlas Mountains Hike in Tabarka"^^xsd:string ;
+    eco:hasPricePerNight "28"^^xsd:float ;
+    eco:isLocatedIn eco:Tabarka .
+
+eco:Service_Activity_28 a eco:Hiking ;
+    eco:carbonFootprint 7.32e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Atlas Mountains Hike in Tozeur"^^xsd:string ;
+    eco:hasPricePerNight "43"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur .
+
+eco:Service_Activity_29 a eco:Diving ;
+    eco:carbonFootprint 1.56e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Deep Blue Adventure in Sousse"^^xsd:string ;
+    eco:hasPricePerNight "83"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse .
+
+eco:Service_Activity_3 a eco:Hiking ;
+    eco:carbonFootprint 9.98e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Atlas Mountains Hike in AinDraham"^^xsd:string ;
+    eco:hasPricePerNight "21"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham .
+
+eco:Service_Activity_30 a eco:Hiking ;
+    eco:carbonFootprint 2.42e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Forest Walk in AinDraham"^^xsd:string ;
+    eco:hasPricePerNight "119"^^xsd:float ;
+    eco:isLocatedIn eco:AinDraham .
+
+eco:Service_Activity_4 a eco:Diving ;
+    eco:carbonFootprint 4.45e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Deep Blue Adventure in Tunis"^^xsd:string ;
+    eco:hasPricePerNight "49"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis .
+
+eco:Service_Activity_5 a eco:Diving ;
+    eco:carbonFootprint 1.7e+00 ;
+    eco:ecoRating 3 ;
+    eco:hasName "Deep Blue Adventure in Tozeur"^^xsd:string ;
+    eco:hasPricePerNight "66"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur .
+
+eco:Service_Activity_6 a eco:Workshop ;
+    eco:carbonFootprint 4.11e+00 ;
+    eco:ecoRating 5 ;
+    eco:hasName "Cooking Couscous in Sousse"^^xsd:string ;
+    eco:hasPricePerNight "109"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse .
+
+eco:Service_Activity_7 a eco:Workshop ;
+    eco:carbonFootprint 1.91e+00 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Cooking Couscous in Sousse"^^xsd:string ;
+    eco:hasPricePerNight "64"^^xsd:float ;
+    eco:isLocatedIn eco:Sousse .
+
+eco:Service_Activity_8 a eco:Diving ;
+    eco:carbonFootprint 1.329e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Coral Reef Dive in Tunis"^^xsd:string ;
+    eco:hasPricePerNight "63"^^xsd:float ;
+    eco:isLocatedIn eco:Tunis .
+
+eco:Service_Activity_9 a eco:Hiking ;
+    eco:carbonFootprint 1.349e+01 ;
+    eco:ecoRating 4 ;
+    eco:hasName "Atlas Mountains Hike in Tozeur"^^xsd:string ;
+    eco:hasPricePerNight "43"^^xsd:float ;
+    eco:isLocatedIn eco:Tozeur .
 
 eco:Transport a owl:Class ;
     rdfs:subClassOf eco:Service .
@@ -467,35 +677,17 @@ eco:Location a owl:Class ;
     rdfs:subClassOf eco:TourismEntity ;
     owl:disjointWith eco:Service .
 
-eco:Activity_BirdWatching a eco:Activity ;
-    eco:hasName "BirdWatching" .
-
 eco:TourismEntity a owl:Class .
 
 eco:Accommodation a owl:Class ;
     rdfs:subClassOf eco:Service .
 
-eco:Activity a owl:Class ;
-    rdfs:subClassOf eco:Service .
-
-eco:Tabarka a eco:City .
-
-eco:Tozeur a eco:City .
-
-eco:Activity_CamelRide a eco:Activity ;
-    eco:hasName "CamelRide" .
+eco:Djerba a eco:City .
 
 eco:City a owl:Class ;
     rdfs:subClassOf eco:Location .
 
-eco:AinDraham a eco:City .
-
-eco:Activity_Diving a eco:Activity ;
-    eco:hasName "Diving" .
-
-eco:Djerba a eco:City .
-
-eco:EcoLodge a owl:Class ;
+eco:Camping a owl:Class ;
     rdfs:subClassOf eco:Accommodation .
 
 eco:Service a owl:Class ;
@@ -503,13 +695,16 @@ eco:Service a owl:Class ;
 
 eco:Sousse a eco:City .
 
-eco:Activity_PotteryWorkshop a eco:Activity ;
-    eco:hasName "PotteryWorkshop" .
+eco:EcoLodge a owl:Class ;
+    rdfs:subClassOf eco:Accommodation .
+
+eco:Tozeur a eco:City .
 
 eco:Tunis a eco:City .
 
-eco:Activity_Hiking a eco:Activity ;
-    eco:hasName "Hiking" .
+eco:Tabarka a eco:City .
+
+eco:AinDraham a eco:City .
 
 eco:Hotel a owl:Class ;
     rdfs:subClassOf eco:Accommodation .
