@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Accommodations - Eco-Travel Tunisia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .navbar { background: linear-gradient(135deg, #198754, #20c997); }
+        .table-hover tbody tr:hover {
+            background-color: #e9f5e9;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">🌿 Eco-Travel Tunisia</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/admin">Manage Accommodations</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold">Manage Accommodations</h1>
+            <a href="/edit" class="btn btn-success btn-lg">+ Add New Accommodation</a>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accommodations-table-body">
+                        <!-- Data will be injected by JavaScript -->
+                    </tbody>
+                </table>
+                <div id="loading-state" class="text-center text-muted py-5">
+                    <div class="spinner-border text-success" role="status"></div>
+                    <p class="mt-2">Loading accommodations...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = "http://127.0.0.1:5000";
+
+        window.onload = async function() {
+            await loadAccommodations();
+        };
+
+        async function loadAccommodations() {
+            const tableBody = document.getElementById('accommodations-table-body');
+            const loadingState = document.getElementById('loading-state');
+            tableBody.innerHTML = '';
+            loadingState.style.display = 'block';
+
+            try {
+                const response = await fetch(`${API_BASE}/hotels`);
+                const accommodations = await response.json();
+
+                if (accommodations.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No accommodations found.</td></tr>';
+                } else {
+                    accommodations.forEach(acc => {
+                        const row = `
+                            <tr>
+                                <td class="fw-medium">${acc.name}</td>
+                                <td>${acc.city}</td>
+                                <td><span class="badge bg-secondary">${acc.type}</span></td>
+                                <td>${acc.price} TND</td>
+                                <td>${"🍃".repeat(acc.rating)}</td>
+                                <td>
+                                    <a href="/edit/${encodeURIComponent(acc.name)}" class="btn btn-sm btn-outline-primary">Edit</a>
+                                    <button class="btn btn-sm btn-outline-danger" onclick="deleteAccommodation('${acc.name}')">Delete</button>
+                                </td>
+                            </tr>
+                        `;
+                        tableBody.insertAdjacentHTML('beforeend', row);
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to load accommodations:", error);
+                tableBody.innerHTML = '<tr><td colspan="6" class="text-center text-danger">Failed to load data.</td></tr>';
+            } finally {
+                loadingState.style.display = 'none';
+            }
+        }
+        
+        async function deleteAccommodation(name) {
+            if (!confirm(`Are you sure you want to delete "${name}"?`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/accommodation/${encodeURIComponent(name)}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                await loadAccommodations(); // Refresh table
+            } catch (error) {
+                console.error('Failed to delete accommodation:', error);
+                alert('Failed to delete. Check console for details.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,14 +1,51 @@
-from flask import Flask, jsonify, request
+# NOTE TO THE USER:
+# The front-end for this application is in the 'index.html' file.
+# If you are not seeing the latest changes (like Add/Edit/Delete buttons),
+# please clear your browser's cache or perform a "hard refresh":
+# - Windows/Linux: Ctrl+Shift+R
+# - Mac: Cmd+Shift+R
+
+from flask import Flask, jsonify, request, send_from_directory
 from SPARQLWrapper import SPARQLWrapper, JSON
 from flask_cors import CORS
 import re
+import uuid
+import os
 
 app = Flask(__name__)
 CORS(app) 
 
+# ---------------------------------------------------------
+# 0. PAGE SERVING
+# ---------------------------------------------------------
+@app.route('/')
+def root():
+    return send_from_directory('.', 'index.html')
+
+@app.route('/admin')
+def admin_page():
+    return send_from_directory('.', 'admin.html')
+
+@app.route('/edit')
+@app.route('/edit/<path:name>')
+def edit_page(name=None):
+    return send_from_directory('.', 'edit.html')
+
 # 🔗 CONNECT TO FUSEKI
 FUSEKI_URL = "http://localhost:3030/eco_db/query"
+FUSEKI_URL_UPDATE = "http://localhost:3030/eco_db/update"
 sparql = SPARQLWrapper(FUSEKI_URL)
+
+def run_sparql_update(query):
+    sparql_update = SPARQLWrapper(FUSEKI_URL_UPDATE)
+    sparql_update.setMethod('POST')
+    sparql_update.setQuery(query)
+    try:
+        sparql_update.query()
+        return True
+    except Exception as e:
+        print(f"❌ Error contacting Fuseki for update: {e}")
+        return False
 
 def run_sparql_query(query):
     sparql.setQuery(query)
@@ -167,7 +204,99 @@ def chat_bot():
     return jsonify({"response": bot_reply, "data": results})
 
 # ---------------------------------------------------------
-# 3. HELPER ENDPOINTS
+# 3. CRUD ENDPOINTS FOR ACCOMMODATION
+# ---------------------------------------------------------
+@app.route('/accommodation', methods=['POST'])
+def add_accommodation():
+    """Adds a new accommodation."""
+    data = request.get_json()
+    if not data or not all(k in data for k in ['name', 'city', 'type', 'price', 'rating', 'co2']):
+        return jsonify({"error": "Missing data"}), 400
+
+    new_id = str(uuid.uuid4())
+    
+    # The name of the new accommodation instance, using a UUID to ensure uniqueness
+    accommodation_instance = f"eco:{data['name'].replace(' ', '_')}_{new_id[:8]}"
+    city_instance = f"eco:{data['city'].capitalize()}"
+
+    query = f"""
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    INSERT DATA {{
+      {accommodation_instance} a eco:{data['type']} ;
+                               eco:hasName "{data['name']}" ;
+                               eco:isLocatedIn {city_instance} ;
+                               eco:hasPricePerNight {data['price']} ;
+                               eco:ecoRating {data['rating']} ;
+                               eco:carbonFootprint {data['co2']} .
+    }}
+    """
+    
+    if run_sparql_update(query):
+        return jsonify({"message": "Accommodation added successfully"}), 201
+    else:
+        return jsonify({"error": "Failed to add accommodation"}), 500
+
+@app.route('/accommodation/<name>', methods=['DELETE'])
+def delete_accommodation(name):
+    """Deletes an accommodation by name."""
+    
+    query = f"""
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    DELETE WHERE {{
+      ?s eco:hasName "{name}" ;
+         ?p ?o .
+    }}
+    """
+    
+    if run_sparql_update(query):
+        return jsonify({"message": f"Accommodation '{name}' deleted successfully"}), 200
+    else:
+        return jsonify({"error": "Failed to delete accommodation"}), 500
+
+@app.route('/accommodation/<name>', methods=['PUT'])
+def update_accommodation(name):
+    """Updates an accommodation by name."""
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Missing data"}), 400
+
+    # First, delete the old accommodation data
+    delete_query = f"""
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    DELETE WHERE {{
+      ?s eco:hasName "{name}" ;
+         ?p ?o .
+    }}
+    """
+    if not run_sparql_update(delete_query):
+        return jsonify({"error": "Failed to delete old accommodation data for update"}), 500
+
+    # Now, insert the new data
+    new_id = str(uuid.uuid4())
+    accommodation_instance = f"eco:{data.get('name', name).replace(' ', '_')}_{new_id[:8]}"
+    city_instance = f"eco:{data['city'].capitalize()}"
+
+    insert_query = f"""
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    INSERT DATA {{
+      {accommodation_instance} a eco:{data.get('type')} ;
+                               eco:hasName "{data.get('name', name)}" ;
+                               eco:isLocatedIn {city_instance} ;
+                               eco:hasPricePerNight {data.get('price')} ;
+                               eco:ecoRating {data.get('rating')} ;
+                               eco:carbonFootprint {data.get('co2')} .
+    }}
+    """
+
+    if run_sparql_update(insert_query):
+        return jsonify({"message": f"Accommodation '{name}' updated successfully"}), 200
+    else:
+        # Try to restore old data? For now, we just report the error.
+        return jsonify({"error": "Failed to insert new accommodation data after update"}), 500
+
+
+# ---------------------------------------------------------
+# 4. HELPER ENDPOINTS
 # ---------------------------------------------------------
 
 @app.route('/cities', methods=['GET'])

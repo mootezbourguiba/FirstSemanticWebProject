@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Accommodation - Eco-Travel Tunisia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .navbar { background: linear-gradient(135deg, #198754, #20c997); }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">🌿 Eco-Travel Tunisia</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Manage Accommodations</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-body p-5">
+                        <h1 id="form-title" class="fw-bold mb-4">Add New Accommodation</h1>
+                        <form id="accommodationForm">
+                            <input type="hidden" id="originalName" name="originalName">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" name="city" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="type" class="form-label">Type</label>
+                                <select class="form-select" id="type" name="type" required>
+                                    <option value="Hotel">Hotel</option>
+                                    <option value="EcoLodge">EcoLodge</option>
+                                    <option value="Camping">Camping</option>
+                                    <option value="Hiking">Hiking</option>
+                                    <option value="Diving">Diving</option>
+                                    <option value="Workshop">Workshop</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="price" class="form-label">Price (TND)</label>
+                                    <input type="number" class="form-control" id="price" name="price" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="rating" class="form-label">Rating (1-5)</label>
+                                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="co2" class="form-label">CO2 Footprint (kg)</label>
+                                <input type="number" class="form-control" id="co2" name="co2" required>
+                            </div>
+                            <div class="d-flex justify-content-end mt-4">
+                                <a href="/admin" class="btn btn-secondary me-2">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = "http://127.0.0.1:5000";
+        const form = document.getElementById('accommodationForm');
+        const formTitle = document.getElementById('form-title');
+        const originalNameInput = document.getElementById('originalName');
+        const nameInput = document.getElementById('name');
+
+        window.onload = async function() {
+            const pathParts = window.location.pathname.split('/');
+            const accommodationName = pathParts.length > 2 ? decodeURIComponent(pathParts[2]) : null;
+
+            if (accommodationName) {
+                // This is an edit operation
+                formTitle.textContent = `Edit "${accommodationName}"`;
+                originalNameInput.value = accommodationName;
+                await loadAccommodationDetails(accommodationName);
+            }
+            // Otherwise, it's an add operation, and the form is already set for that.
+        };
+
+        async function loadAccommodationDetails(name) {
+            try {
+                const response = await fetch(`${API_BASE}/hotel_details?name=${encodeURIComponent(name)}`);
+                if (!response.ok) {
+                    throw new Error('Accommodation not found');
+                }
+                const data = await response.json();
+
+                // Populate the form
+                nameInput.value = data.name;
+                document.getElementById('city').value = data.city;
+                document.getElementById('type').value = data.type;
+                document.getElementById('price').value = data.price;
+                document.getElementById('rating').value = data.rating;
+                document.getElementById('co2').value = data.co2;
+
+            } catch (error) {
+                console.error("Failed to load accommodation details:", error);
+                alert("Could not load accommodation details. Returning to admin page.");
+                window.location.href = '/admin';
+            }
+        }
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const originalName = originalNameInput.value;
+            const isEdit = originalName !== '';
+            
+            const data = {
+                name: form.name.value,
+                city: form.city.value,
+                type: form.type.value,
+                price: parseFloat(form.price.value),
+                rating: parseInt(form.rating.value),
+                co2: parseFloat(form.co2.value)
+            };
+
+            const url = isEdit ? `${API_BASE}/accommodation/${encodeURIComponent(originalName)}` : `${API_BASE}/accommodation`;
+            const method = isEdit ? 'PUT' : 'POST';
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                alert('Accommodation saved successfully!');
+                window.location.href = '/admin'; // Redirect to admin page after save
+
+            } catch (error) {
+                console.error('Failed to save accommodation:', error);
+                alert('Failed to save. Check console for details.');
+            }
+        });
+    </script>
+</body>
+</html>
