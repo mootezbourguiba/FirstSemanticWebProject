@@ -213,6 +213,52 @@ def get_recommendations():
     raw_data = run_sparql_query(query)
     return jsonify(format_results(raw_data))
 
+@app.route('/hotel_details', methods=['GET'])
+def get_hotel_details():
+    """Returns all details for a specific hotel by name."""
+    hotel_name = request.args.get('name')
+    if not hotel_name:
+        return jsonify({"error": "Hotel name is required"}), 400
+
+    query = f"""
+    PREFIX eco: <http://www.semanticweb.org/eco-tourism#>
+    SELECT ?name ?city ?price ?rating ?co2 ?type ?activity_name
+    WHERE {{
+      ?s eco:hasName "{hotel_name}" ;
+         eco:hasName ?name ;
+         eco:isLocatedIn ?cityNode ;
+         eco:hasPricePerNight ?price ;
+         eco:ecoRating ?rating ;
+         eco:carbonFootprint ?co2 .
+
+      BIND(STRAFTER(STR(?cityNode), "#") AS ?city)
+
+      # Determine the type of the service
+      {{ ?s a eco:Hotel . BIND("Hotel" AS ?type) }}
+      UNION {{ ?s a eco:Camping . BIND("Camping" AS ?type) }}
+      UNION {{ ?s a eco:Hiking . BIND("Hiking" AS ?type) }}
+      UNION {{ ?s a eco:Diving . BIND("Diving" AS ?type) }}
+      UNION {{ ?s a eco:Workshop . BIND("Workshop" AS ?type) }}
+      UNION {{ ?s a eco:EcoLodge . BIND("EcoLodge" AS ?type) }}
+
+      # Optionally, find if this service offers an activity
+      OPTIONAL {{
+        ?activity eco:isOfferedBy ?s .
+        ?activity eco:hasName ?activity_name .
+      }}
+    }}
+    LIMIT 1
+    """
+    raw_data = run_sparql_query(query)
+    
+    # format_results returns a list, but we only expect one result
+    results = format_results(raw_data)
+    
+    if results:
+        return jsonify(results[0])
+    else:
+        return jsonify({"error": "Hotel not found"}), 404
+
 if __name__ == '__main__':
     print("🚀 Starting Smart Eco-Backend on Port 5000...")
     app.run(debug=True, port=5000)
