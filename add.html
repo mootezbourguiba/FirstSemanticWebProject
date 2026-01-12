@@ -57,7 +57,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Add Service</button>
-                <a href="/" class="btn btn-link w-100 mt-2 text-decoration-none text-muted">Cancel</a>
+                <a href="admin.html" class="btn btn-link w-100 mt-2 text-decoration-none text-muted">Cancel</a>
             </form>
         </div>
     </div>
@@ -85,7 +85,7 @@
                 const result = await response.json();
                 if (response.ok) {
                     alert('✅ ' + result.message);
-                    window.location.href = '/';
+                    window.location.href = 'admin.html';
                 } else {
                     alert('❌ Error: ' + result.error);
                 }

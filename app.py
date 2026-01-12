@@ -36,6 +36,7 @@ def root():
     return send_from_directory('.', 'index.html')
 
 @app.route('/admin')
+@app.route('/admin.html')
 def admin_page():
     return send_from_directory('.', 'admin.html')
 
@@ -45,6 +46,7 @@ def edit_page(name=None):
     return send_from_directory('.', 'edit.html')
 
 @app.route('/add')
+@app.route('/add.html')
 def add_page():
     return send_from_directory('.', 'add.html')
 
