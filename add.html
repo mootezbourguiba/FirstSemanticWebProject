@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Service - Eco-Travel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0fdf4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { max-width: 600px; margin-top: 50px; }
+        .card { border: none; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .btn-success { background-color: #198754; border: none; }
+        .btn-success:hover { background-color: #157347; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card p-4">
+            <h2 class="fw-bold text-success mb-4">Add New Service 🌿</h2>
+            
+            <form id="addForm">
+                <div class="mb-3">
+                    <label class="form-label">Service Name</label>
+                    <input type="text" class="form-control" id="name" required placeholder="e.g. Green Palm Hotel">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" required placeholder="e.g. Tozeur">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Type</label>
+                    <select class="form-select" id="type">
+                        <option value="Hotel">Hotel</option>
+                        <option value="EcoLodge">EcoLodge</option>
+                        <option value="Camping">Camping</option>
+                        <option value="Hiking">Hiking</option>
+                        <option value="Diving">Diving</option>
+                        <option value="Workshop">Workshop</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Price (TND)</label>
+                        <input type="number" class="form-control" id="price" required min="0">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Rating (1-5)</label>
+                        <input type="number" class="form-control" id="rating" required min="1" max="5">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">CO2 (kg)</label>
+                        <input type="number" class="form-control" id="co2" required step="0.01">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Add Service</button>
+                <a href="/" class="btn btn-link w-100 mt-2 text-decoration-none text-muted">Cancel</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('addForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const data = {
+                name: document.getElementById('name').value,
+                city: document.getElementById('city').value,
+                type: document.getElementById('type').value,
+                price: parseFloat(document.getElementById('price').value),
+                rating: parseInt(document.getElementById('rating').value),
+                co2: parseFloat(document.getElementById('co2').value)
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/accommodation', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert('✅ ' + result.message);
+                    window.location.href = '/';
+                } else {
+                    alert('❌ Error: ' + result.error);
+                }
+            } catch (error) {
+                console.error(error);
+                alert('❌ Connection failed.');
+            }
+        });
+    </script>
+</body>
+</html>

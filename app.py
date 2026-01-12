@@ -1,9 +1,22 @@
-# NOTE TO THE USER:
-# The front-end for this application is in the 'index.html' file.
-# If you are not seeing the latest changes (like Add/Edit/Delete buttons),
-# please clear your browser's cache or perform a "hard refresh":
-# - Windows/Linux: Ctrl+Shift+R
-# - Mac: Cmd+Shift+R
+# =====================================================================================
+# ================================== IMPORTANT ========================================
+# =====================================================================================
+#
+# TO RUN THIS APPLICATION:
+#
+# 1. Run this Python script (`app.py`) in your terminal:
+#    python app.py
+#
+# 2. Open your web browser and go to the following URLs:
+#
+#    - For the main page: http://localhost:5000/
+#    - For the admin page: http://localhost:5000/admin
+#
+# DO NOT open the .html files directly in your browser, as this will not work.
+# The "Add" and "Edit" buttons will give a "File not found" error if you do.
+# You must access the pages through the `http://localhost:5000` address.
+#
+# =====================================================================================
 
 from flask import Flask, jsonify, request, send_from_directory
 from SPARQLWrapper import SPARQLWrapper, JSON
@@ -30,6 +43,10 @@ def admin_page():
 @app.route('/edit/<path:name>')
 def edit_page(name=None):
     return send_from_directory('.', 'edit.html')
+
+@app.route('/add')
+def add_page():
+    return send_from_directory('.', 'add.html')
 
 # 🔗 CONNECT TO FUSEKI
 FUSEKI_URL = "http://localhost:3030/eco_db/query"
